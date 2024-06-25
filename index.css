@@ -1,0 +1,359 @@
+/* The desktop -- 'body' needs 'position: fixed' to keep from unsightly leakage when a window is dragged over the edge */
+html {
+  height: 100%;
+}
+body {
+  background: url(back.png) left top no-repeat;
+  background-size: cover;
+  font-family: sans-serif;
+  font-size: 75%;
+  height: 100%;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  --sb-track-color: #232e33;
+  --sb-thumb-color: #b5b5b5;
+  --sb-size: 14px;
+  text-align: center;
+}
+
+/* These are needed only for IE */
+a:active {
+  background: none;
+}
+img {
+  border: none;
+}
+
+/* The "glass" itself -- background-filter now available to blur the background that shows through, which has limited support, but looks really nice when available. */
+.windowframe {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(25, 40, 55, 0.75) 35%,
+    rgba(65, 85, 100, 0.75) 40%,
+    rgba(65, 85, 100, 0.75) 42%,
+    rgba(25, 40, 55, 0.75) 50%,
+    rgba(25, 40, 55, 0.75) 55%,
+    rgba(70, 85, 100, 0.75) 60%,
+    rgba(70, 85, 100, 0.75) 75%,
+    rgba(25, 40, 55, 0.75) 90%
+  );
+  background-attachment: fixed;
+  background-clip: padding-box;
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(2, 3, 4, 0.86);
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px rgba(246, 246, 247, 0.92),
+    0 3px 9px rgba(0, 0, 0, 0.64);
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 640px;
+  z-index: 0;
+}
+.windowframe:target {
+  box-shadow: inset 0 0 0 1px rgba(246, 246, 247, 0.92),
+    0 7px 19px rgba(0, 0, 0, 0.9);
+  z-index: 1;
+}
+.windowframe:before,
+.windowframe:after {
+  content: "";
+  height: 160px;
+  position: absolute;
+  top: 0;
+  width: 180px;
+  z-index: -1;
+}
+.windowframe:before {
+  background-image: radial-gradient(
+    200% 200% at bottom right,
+    rgba(185, 190, 195, 0) 50%,
+    rgba(185, 190, 195, 0.6) 75%
+  );
+  border-top-left-radius: 6px;
+  left: 0;
+}
+.windowframe:after {
+  background-image: radial-gradient(
+    200% 200% at bottom left,
+    rgba(185, 190, 195, 0) 50%,
+    rgba(185, 190, 195, 0.6) 75%
+  );
+  border-top-right-radius: 6px;
+  right: 0;
+}
+.titlebar {
+  color: black;
+  cursor: default;
+  display: block;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: 600;
+  line-height: 27px;
+  text-decoration: none;
+}
+.sysmenu {
+  float: left;
+  height: 16px;
+  margin-left: 6px;
+  margin-top: 6px;
+  width: 16px;
+}
+.sysmenu .icon {
+  display: block;
+}
+.caption {
+  float: left;
+  margin-left: 6px;
+  text-shadow: 0 0 2px white, 0 0 5px white, 0 0 9px white, 0 0 14px white,
+    0 0 20px white;
+}
+
+/* Buttons for minimise/maximise/close */
+.buttons {
+  border-radius: 0 0 5px 5px;
+  box-shadow: inset 0 0 0 1px rgba(40, 43, 44, 0.8),
+    -1px 1px 0 rgba(223, 233, 234, 0.84), 1px 1px 0 rgba(223, 233, 234, 0.84);
+  padding: 1px 0 0;
+  position: absolute;
+  right: 6px;
+  top: -1px;
+}
+.buttons button {
+  background-color: transparent;
+  border: none;
+  border-bottom-left-radius: 4px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  font-size: 10px;
+  font-weight: bold;
+  height: 19px;
+  margin: 0 1px 1px;
+  padding: 0;
+  position: relative;
+}
+.buttons button:last-child {
+  border-bottom-right-radius: 4px;
+}
+.buttons button + button {
+  border-bottom-left-radius: 0;
+  margin-left: 0;
+}
+.buttons button:before,
+.buttons button:after {
+  bottom: 5px;
+  position: absolute;
+  left: 50%;
+}
+.minimise,
+.maximise {
+  box-shadow: inset 0 0 0 1px rgba(212, 216, 221, 0.8),
+    0 0 0 1px rgba(40, 43, 44, 0.8);
+  width: 27px;
+}
+.close {
+  box-shadow: inset 0 0 0 1px rgba(212, 216, 221, 0.8),
+    0 0 0 1px rgba(28, 32, 23, 0.8);
+  width: 46px;
+}
+.windowframe:target .minimise,
+.windowframe:target .maximise {
+  background: linear-gradient(
+    rgba(221, 223, 226, 0.8),
+    rgba(188, 191, 184, 0.74) 50%,
+    rgba(119, 124, 127, 0.64) 55%,
+    rgba(165, 163, 176, 0.7)
+  );
+}
+.windowframe:target .close {
+  background: linear-gradient(
+    rgba(225, 168, 159, 0.91),
+    rgba(195, 114, 104, 0.91) 50%,
+    rgba(170, 52, 36, 0.91) 55%,
+    rgba(187, 111, 94, 0.91)
+  );
+}
+.minimise:after {
+  background: linear-gradient(#ffffff, #dddddd);
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px #535666;
+  content: "";
+  height: 3px;
+  margin-left: -5px;
+  width: 10px;
+}
+.maximise:after,
+.maximise:before {
+  border-color: #ffffff #eeeeee #dddddd;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px #535666, inset 0 0 0 1px #535666;
+  box-sizing: content-box;
+  display: block;
+  height: 4px;
+  width: 5px;
+}
+.maximise:after {
+  content: "";
+  margin-left: -5px;
+  width: 6px;
+}
+.close:after {
+  color: #eeeeee;
+  content: "X";
+  display: block;
+  line-height: 8px;
+  margin-left: -4px;
+  text-shadow: 0 -1px #ffffff, -1px -2px #535666, 1px -2px #535666,
+    -1px 1px #535666, 1px 1px #535666, -1px 0 #535666, -1px -1px #535666,
+    1px 0 #535666, 1px -1px #535666;
+}
+
+/* Hover styles -- I didn't add :active styles */
+.minimise:hover,
+.maximise:hover {
+  background: radial-gradient(
+      100% 75% at bottom center,
+      rgba(11, 254, 251, 1),
+      rgba(11, 254, 251, 0)
+    ),
+    linear-gradient(
+      rgba(221, 223, 226, 0.8),
+      rgba(188, 191, 184, 0.74) 50%,
+      rgba(119, 124, 127, 0.64) 55%,
+      rgba(165, 163, 176, 0.7)
+    );
+  box-shadow: inset 0 0 0 1px rgba(212, 216, 221, 0.8),
+    0 0 0 1px rgba(40, 43, 44, 0.8), 0 0 10px 5px rgb(92, 197, 240);
+  z-index: 2;
+}
+.close:hover {
+  background: radial-gradient(
+      100% 75% at bottom center,
+      rgba(245, 228, 119, 1),
+      rgba(245, 228, 119, 0) 50%
+    ),
+    linear-gradient(
+      rgba(230, 152, 140, 0.91),
+      rgba(214, 109, 93, 0.91) 50%,
+      rgba(166, 32, 13, 0.91) 55%,
+      rgba(194, 82, 39, 0.91)
+    );
+  box-shadow: inset 0 0 0 1px rgba(212, 216, 221, 0.8),
+    0 0 0 1px rgba(28, 32, 23, 0.8), 0 0 10px 5px rgb(220, 113, 86);
+  z-index: 2;
+}
+
+/* Maximising is possible */
+.windowframe.maximised {
+  border-radius: 0;
+  bottom: 0;
+  box-shadow: none;
+  height: auto;
+  left: 0 !important;
+  right: 0;
+  top: 0 !important;
+  -webkit-transform: none;
+  transform: none !important;
+  width: auto;
+}
+.windowframe.maximised:before {
+  border-top-left-radius: 0;
+}
+.windowframe.maximised:after {
+  border-top-right-radius: 0;
+}
+.windowframe.maximised .client {
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.windowframe.maximised .maximise:after {
+  margin-left: -6px;
+  width: 5px;
+}
+.windowframe.maximised .maximise:before {
+  bottom: 7px;
+  content: "";
+  margin-left: -4px;
+}
+
+/* Clearfix -- normally, I'd use 'overflow: hidden', but that would clip the glow on :hover over the titlebar buttons */
+.titlebar:after,
+.buttons:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.client {
+  background: white;
+  border: 1px solid rgba(24, 29, 31, 0.71);
+  border-radius: 1px;
+  bottom: 6px;
+  box-shadow: 0 0 0 1px rgba(207, 210, 214, 0.71);
+  color: black;
+  left: 6px;
+  overflow: auto;
+  position: absolute;
+  right: 6px;
+  top: 28px;
+  z-index: 1;
+}
+.appwindow .client {
+  padding: 0 1em;
+}
+.dialog .client {
+  margin: 0 6px 6px;
+  position: static;
+}
+.dialog .text {
+  margin: 26px;
+  overflow: hidden;
+}
+.dialog .controls {
+  background: #f0f0f0;
+  padding: 1em;
+  text-align: right;
+}
+.client button {
+  font-size: 90%;
+  height: 24px;
+  min-width: 86px;
+}
+
+/* Default sizing */
+.appwindow {
+  height: 400px;
+  width: 640px;
+}
+.dialog {
+  width: 350px;
+}
+
+/* Default positions */
+#app-window {
+  -webkit-transform: translate(4em, 4em);
+  transform: translate(4em, 4em);
+}
+#dialog-window {
+  transform: translate(calc(50vw - 176px), calc(50vh - 81px));
+  visibility: hidden;
+}
+
+p {
+  margin-right: 10px;
+}
+
+a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}

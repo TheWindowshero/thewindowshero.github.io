@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style type="text/css">
+      body {
+        background: #f8f8f8;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 20px auto;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+      }
+
+      th {
+        background: #f2f2f2;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tr:hover {
+        background: #f5f5f5;
+      }
+
+      a {
+        text-decoration: none;
+        color: #333;
+      }
+
+      .icon {
+        font-size: 20px;
+        margin-right: 10px;
+      }
+
+      #search {
+        width: 50%;
+        padding: 10px;
+        margin: 20px auto;
+        display: block;
+        box-sizing: border-box;
+      }
+    </style>
+    <title>Software</title>
+  </head>
+  <body>
+    <h1>Software</h1>
+    <input type="text" id="search" placeholder="Search..." />
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="link">
+            <a href="Roms/" title="roms"
+              ><i class="fas fa-folder icon"></i>Roms</a
+            >
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="link">
+            <a
+              href="https://1drv.ms/f/s!Aql5DoCsYu2biXQuWsC_vGSCo0BU?e=gpOqXT"
+              title="windows"
+              ><i class="fas fa-folder icon"></i>Windows</a
+            >
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="link">
+            <a
+              href="https://mega.nz/folder/9r5E3aIZ#Un_-NKPK-VCMs0CqT7FYeA"
+              title="oldsoftware"
+              ><i class="fas fa-folder icon"></i>Old Software</a
+            >
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="link">
+            <a
+              href="https://mega.nz/folder/Fjw2DRbL#jSlI7z9dEStl6NdpwUyyeg"
+              title="oldversoft"
+              ><i class="fas fa-folder icon"></i>Older versions of software</a
+            >
+          </td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      document.getElementById("search").addEventListener("keyup", function () {
+        const searchValue = this.value.toLowerCase();
+        const rows = document.querySelectorAll("tbody tr");
+
+        rows.forEach((row) => {
+          const fileName = row.querySelector(".link").textContent.toLowerCase();
+          if (fileName.includes(searchValue)) {
+            row.style.display = "";
+          } else {
+            row.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

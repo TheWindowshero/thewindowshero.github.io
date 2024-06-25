@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>The Windows Hero</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <!--Navigation-->
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        text-decoration: none;
+        align-items: center;
+        margin-top: 20px;
+        font-size: 15px;
+        background: rgba(87, 87, 87, 0.5);
+      "
+      class="navigation"
+    >
+      <p><a href="index.html">Home</a></p>
+      <p><a href="Software/">Software</a></p>
+      <p><a href="https://1drv.ms/f/s!Aql5DoCsYu2bi3RUsbPz2SqNiMtW?e=l5USbj">Files</a></p>
+      <p><a href="https://github.com/TheWindowshero/Malware">Malware</a></p>
+      <p><a href="About/">About</a></p>
+      <p><a id="contact-a" href="#">Contact</a></p>
+    </div>
+    
+    <div class="windowframe appwindow moveable" id="app-window">
+      <a class="titlebar">
+        <div class="caption">Hello</div>
+        <div class="buttons"><button class="close"></button></div>
+      </a>
+      <div class="client"></div>
+      <!--Window Content-->
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <title>Document</title>
+          <link rel="stylesheet" href="index.css" />
+        </head>
+        <body>
+          <div style="align-items: center" class="client">
+            <h1>Hello, I'm The Win Hero!</h1>
+            <p style="font-size: 13px">
+              Hello there! You landed on The Windows Hero's website! You can
+              download some stuff like older versions of software, Windows and
+              more! You can also see some more information about me! For some
+              links, you will get redirected to my Onedrive or Mega to download
+              the files.
+            </p>
+            <h2 style="text-align: center" id="changingColor">Video</h2>
+            <div style="text-align: center; margin-top: 5px">
+              <iframe
+                id="latestVideo"
+                width="400"
+                height="167"
+                src="https://youtube.com/embed/acUtMcY2xgw"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              >
+              </iframe>
+            </div>
+            <p>Website is made by  <a
+              style="text-decoration: none; color: rgb(0, 101, 253)"
+              href="https://youtube.com/@enderdevcom"
+              target="_blank"
+              >EnderDev</a</p>
+          </div>
+
+          <script>
+              const colors = [
+                "red",
+                "blue",
+                "green",
+                "purple",
+                "orange",
+                "pink",
+              ];
+              let colorIndex = 0;
+              const h2Element = document.getElementById("changingColor");
+
+              setInterval(() => {
+                h2Element.style.color = colors[colorIndex];
+                colorIndex = (colorIndex + 1) % colors.length;
+              }, 1000);
+          </script>
+        </body>
+      </html>
+    </div>
+    <div class="windowframe dialog moveable" id="dialog-window" style="transform: translateX(794px) translateY(325.5px);">
+			<a class="titlebar">
+				<div class="caption">Contact</div>
+				<div class="buttons"><button class="close"></button></div>
+			</a>
+			<div class="client">
+        <p>YouTube: <a
+          style="text-decoration: none; color: rgb(0, 101, 253)"
+          href="https://youtube.com/channel/UCkie7PIz5AVhmec9YBpO_lA"
+          target="_blank"
+          >Main channel</a></p>
+          <p>YouTube: <a
+            style="text-decoration: none; color: rgb(0, 101, 253)"
+            href="https://www.youtube.com/@TheWindowshero2"
+            target="_blank"
+            >Second channel</a></p>
+            <p>Discord: <a
+              style="text-decoration: none; color: rgb(0, 101, 253)"
+              href="https://discord.com/invite/tfrASUh6jZ"
+              target="_blank"
+              >Server</a></p>
+              <p>Discord: thewindowshero</p>
+              <p>GitHub: <a
+                style="text-decoration: none; color: rgb(0, 101, 253)"
+                href="https://github.com/TheWindowshero"
+                target="_blank"
+                >TheWindowshero</a></p>
+                <p>Email: <a
+                  style="text-decoration: none; color: rgb(0, 101, 253)"
+                  href="mailto:thewindowshero@gmail.com"
+                  target="_blank"
+                  >thewindowshero@gmail.com</a></p>
+			</div>
+      
+		</div>
+    <script src="index.js"></script>
+  </body>
+</html>
