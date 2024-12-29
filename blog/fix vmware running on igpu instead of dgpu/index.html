@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to fix vmware running on integraded gpu instead of dedicaded gpu (nvidia gpu)</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: url("Clean.png") no-repeat center center fixed;
+        background-size: cover;
+        padding: 20px;
+        margin: 0;
+      }
+      .blog-container {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 30px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        font-weight: 600;
+      }
+
+      h2 {
+        font-size: 1.8em;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 20px auto;
+        border-radius: 5px;
+      }
+
+      .code {
+        background: rgba(53, 53, 53, 0.8);
+        color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        font-family: monospace;
+        font-size: 15px;
+        overflow-x: auto;
+      }
+
+      .button-container {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .button-container a {
+        text-decoration: none;
+        padding: 12px 24px;
+        background: #cfa226;
+        color: #fff;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 1.1em;
+        transition: background 0.3s ease;
+      }
+
+      .button-container a:hover {
+        background: #a3801f;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 0.9em;
+        color: #555;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+
+        .blog-container {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 2em;
+        }
+
+        h2 {
+          font-size: 1.5em;
+        }
+
+        p {
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <!-- Content -->
+      <h1>How to fix vmware running on integraded gpu instead of dedicaded gpu (nvidia gpu)</h1>
+      <p>
+        So, you're trying to run vmware smoothly but it doesn't run on your powerfull Nvidia gpu.
+        Instead, it runs on your slower igpu which makes it less smooth. It also eats your ram 
+        because the ram is used as vram for the igpu. Let's fix that! Today I will show you how!
+      </p>
+
+      
+      <p>
+        As you can see, we don't have an option to choose a gpu in the vmware's preferences.
+      </p>
+      <img src="vmware preferences.png" alt="vmware preferences" />
+      <ol>
+        <p>
+          But, we have another way to do this. Open your Nvidia control panel. 
+          You can open this using the context menu on your desktop, the tray 
+          icon or the start menu.
+        </p>
+        <img src="context menu.png" alt="context menu" />
+        <p>
+         Then, go to <strong>"Manage 3D settings"</strong>, then choose <strong>program settings</strong>.
+        </p>
+        
+        <img src="control panel 1.png" alt="Nvidia Control Panel" />
+      <p>
+       Click <Strong>add</Strong>, then you click <Strong>browse</Strong> and you add the following executables:
+      </p>
+      <div class="code">
+        C:\Program Files (x86)\VMware\VMware Workstation\x64\vmware-vmx.exe
+      </div>
+      <div class="code">
+        C:\Program Files (x86)\VMware\VMware Workstation\x64\mksSandbox.exe
+      </div>
+      <div class="code">
+        C:\Program Files (x86)\VMware\VMware Workstation\x64\tpm2emu.exe
+      </div>
+      <img src="add.png" alt="add" />
+      <img src="browse.png" alt="browse" />
+      <p>
+      Then, we select each executable and change the settings of it. Set the preferred graphics processor to 
+      <Strong>High-perfomance NVIDIA processor</Strong>.
+      </p>
+      <img src="setting.png" alt="setting" />
+       
+      <p>
+      That's it! When you launch a vm, you'll notice that it's running on the dedicaded Nvidia gpu instead of the integraded gpu. 
+      The vram usage isn't high on the screenshot but that changes when running tasks inside the vm.
+      </p>
+      <img src="activity.png" alt="GPU activity" />
+      <img src="taskmgr.png" alt="options" />
+
+
+         <p>
+        I hope this blogpost solved your issue! Thank you for reading!
+      </p>
+
+      <div class="button-container">
+        <a href="blog.html">Go Back to Blogs</a>
+      </div>
+      <div class="footer">
+        <footer style="color: #fff">
+          Original template by The Windows Hero. Improved by
+          <a href="https://youtube.com/@justwinstuff">WinStuff</a>.
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
