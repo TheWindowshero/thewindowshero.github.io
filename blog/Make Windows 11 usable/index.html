@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Make the Windows 11 UI usable!</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: url("Clean.png") no-repeat center center fixed;
+        background-size: cover;
+        padding: 20px;
+        margin: 0;
+      }
+      .blog-container {
+        max-width: 900px;
+        margin: 50px auto;
+        padding: 30px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        font-weight: 600;
+      }
+
+      h2 {
+        font-size: 1.8em;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 20px auto;
+        border-radius: 5px;
+      }
+
+      .code {
+        background: rgba(53, 53, 53, 0.8);
+        color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        font-family: monospace;
+        font-size: 15px;
+        overflow-x: auto;
+      }
+    .button-container {
+        text-align: center;
+        margin: 20px 0;
+      }
+
+      .button-container a {
+        text-decoration: none;
+        padding: 12px 24px;
+        background: #cfa226;
+        color: #fff;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 1.1em;
+        transition: background 0.3s ease;
+      }
+
+      .button-container a:hover {
+        background: #a3801f;
+      }
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 0.9em;
+        color: #555;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+
+        .blog-container {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 2em;
+        }
+
+        h2 {
+          font-size: 1.5em;
+        }
+
+        p {
+          font-size: 1em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <!-- Content -->
+      <h1>Make the Windows 11 UI usable! Here's how!</h1>
+      <p>
+        Windows 10 is ending support. You don't want to use Windows 10 IoT Enterpise LTSC 2021 
+        or stay on an unsupported Windows 10 22h2 install. Linux isn't an option. You also don't 
+        want to deal with the Windows 11 UI that might seem bad in your opinion. I share that opinion, 
+        so let's fix it! Both methodes wont affect your perfomance at all!
+      </p>
+      <h2>Method 1: StartAllBack (NOT sponsored!)</h2>
+       <p>
+         StartAllBack is a paid tool that gives you a nice start menu and taskbar. It costs 5€, which is a good price.
+         It offers a free 100 day trial, which is great! <a
+            href="https://www.startallback.com"
+            target="_blank"
+            >Download</a <p> it using the website. </p>
+        <img src="startallback site.png" alt="StartAllBack website" />
+        
+
+       <p> Then, run the installer.
+        </p>
+        
+        <img src="setup startallback 1.png" alt="StartAllBack setup" />
+      <p>
+      Next, Explorer will restart and the start menu and taskbar will look like this:
+      </p>
+      <img src="startallback start.png" alt="StartAllBack default" />
+
+     <p>Now we will configure it to make it perfect. Right click the taskbar and click properties.
+      The welcome section will appear. I prefer the Proper11 skin (the default one)so I will select that but you can 
+       select what you want.</p>
+      
+      <img src="startallback config 1.png" alt="welcome" />
+       
+      <p>
+      There are a lot of options to customize the taskbar. You can choose to make it small and 
+      set it at the position you want. You can also unlock the taskbar and drag it where you want 
+      it to be like you used to do on older versions of Windows.
+      </p>
+      <img src="startallback taskbar at top.png" alt="small taskbar" />
+      <img src="startallback taskbar at top.png" alt="taskbar at top" />
+      <img src="startallback taskbar context menu.jpg" alt="Context menu StartAllBack taskbar" />
+
+
+
+          <p> Next, let's fix the File Explorer. I prefer the Win10 Ribbon UI so I will select that.</p>
+          <img src="startallback config 3.png" alt="file explorer configuration" />
+          <p> Now, it looks like this:</p>
+          <img src="startallback explorer.png" alt="StartAllBack explorer" />
+          <p> This is what the result looks like:</p>
+          <img src="startallback result light.jpg" alt="Result StartAllBack light" />
+          <p> And of course, it supports dark mode too!</p>
+                <img src="startallback result dark.jpg" alt="taskbar at top" />
+                <p>The context menu looks really nice on my main system!</p>
+               <img src="context menu startallback.jpg" alt="taskbar at top" />
+          <p> To activate StartAllBack, buy a key on the website and enter the key in this window: </p>
+          <img src="startallback activate.png" alt="StartAllBack activate" />
+        
+        <h2>Method 2: ExplorerPatcher</h2>
+        <p>ExplorerPatcher is a tool that restores the Windows 10 taskbar and startmenu. It does a great job, but the recent Windows 11 
+          updates might cause it to be more buggy then StartAllBack, so proceed at your own risk. You can <a
+            href="https://github.com/valinet/ExplorerPatcher"
+            target="_blank"
+            >download</a <p> it from the GitHub repository. Make sure to always download the latest version! </p>
+           <img src="explorerpatcher github.png" alt="ExplorerPatcher GitHub" />
+           <p>Your browser and Windows Defender might block ExplorerPatcher, but it's fully safe and trusted 
+            by many people inside the Windows Community. I had to disable defender to install it. After installing it, you can re-enable Defender.</p>
+          <img src="defender.png" alt="Windows Defender" />
+          <p>After installing it, you'll see a new shortcut in your Start Menu to comfigure Explorer Pather.</p>
+          <img src="explorerpatcher 1.png" alt="ExplorerPatcher in the start menu" />
+          <p>Now, the ExplorerPatcher window will show up. By default, the taskbar is set to Windows 10, which isn't supported on Windows 11 anymore after recent updates. </p>
+           <img src="explorerpatcher 2.png" alt="ExplorerPatcher Windows 10 (unsupported)" />
+          <p>Thankfully, there's a Windows 10 (ExplorerPatcher) option which will work.</p>
+          <img src="explorerpatcher 3.png" alt="ExplorerPatcher Windows 10 (Supported)" />
+          <p> Next, let's change the start menu. I will make sure to set the Start menu to open at the edge of the screen.</p>
+          <img src="explorerpatcher 4.png" alt="ExplorerPatcher Start Menu settings" />
+          <p> Next, we will fix the File Explorer.</p>
+          <img src="explorerpatcher 8.png" alt="File Explorer settings" />
+          <p>And finally, let's restart Explorer for the changes to take effect.</p>
+          <img src="restart explorer.png" alt="Restart Explorer" />
+          <p>Now, we have the Windows 10 taskbar and start menu!</p>
+          <img src="explorerpatcher 5.jpg" alt="Windows 10 Taskbar and Start Menu" />
+          <p>You can also set the taskbar to the position you want. Unlock the taskbar by right clicking and drag it where you want.</p>
+                    <img src="explorerpatcher context menu taskbar.png" alt="Context menu taskbar" />
+                              <img src="explorerpatcher 6.jpg" alt="Taskbar at the top"
+          <img src="explorer patcher explorer.png" alt="File Explorer" />
+          <p>And this is the result.</p>
+          <img src="result explorerpatcher light.jpg" alt="File Explorer" />
+          <p> It supports dark mode as well!</p>
+         <img src="result explorerpatcher dark.jpg" alt="File Explorer" />
+        <p>I hope this will help you fix your issues with the Windows 11 UI. Thank you for reading!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="button-container">
+        <a href="blog.html">Go Back to Blogs</a>
+      </div>
+      <div class="footer">
+        <footer style="color: #fff">
+          Original template by The Windows Hero. Improved by
+          <a href="https://youtube.com/@justwinstuff">WinStuff</a>.
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
